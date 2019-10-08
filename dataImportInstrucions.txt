@@ -1,0 +1,3 @@
+To import book data into your mongoDB database;
+Make sure your mongoDB is running;
+run 'mongo bookAPI < booksJsonjs' from the command line.

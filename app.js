@@ -18,6 +18,7 @@ server.get('/', (req, res) => {
   res.send('Welcome to API tests');
 });
 
+/* eslint-disable-next-line no-console */
 server.listen(port, () => {
   console.log(`Running on Port ${port}`);
 });
