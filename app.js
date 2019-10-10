@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const server = express();
-const db = mongoose.connect('mongodb://localhost/bookAPI');
+const db = mongoose.connect('mongodb://localhost/bookAPI',{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 const port = process.env.PORT || 3000;
 const Book = require('./models/book');
 const bookRouter = require('./routes/bookRouter')(Book);
