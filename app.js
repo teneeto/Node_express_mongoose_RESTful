@@ -14,9 +14,9 @@ server.use(bodyParser.json());
 bookRouter.route('/books')
   .post((req, res) => {
     const book = new Book(req.body);
-    console.log(book);
-    return res.json(book);
-    
+    book.save();
+    return res.status(201).json(book);
+
   })
 
   //to get all books in db
