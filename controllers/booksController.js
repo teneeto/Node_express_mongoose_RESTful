@@ -22,7 +22,15 @@ function booksController(Book) {
       if (err) {
         return res.send(err);
       }
-      return res.json(books);
+
+      // adding HATEOAS for reference links to our api
+      const returnBooks = books.map((book) => {
+        const newBook = book.toJSON();
+        newBook.links = {};
+        newBook.links.self = `http://${req.headers.host}/api/v1/books/${book._id}`;
+        return newBook;
+      })
+      return res.json(returnBooks);
     })
   }
   return { post, get }

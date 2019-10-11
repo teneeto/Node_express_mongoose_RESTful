@@ -5,14 +5,14 @@ const bodyParser = require('body-parser');
 const server = express();
 
 if (process.env.ENV === 'Test') {
-  console.log('This is a test');
+  console.log('Test db');
 
   const db = mongoose.connect('mongodb://localhost/bookAPI_Test', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
 } else {
-  console.log('This is for real');
+  console.log('Dev db');
 
   const db = mongoose.connect('mongodb://localhost/bookAPI', {
     useNewUrlParser: true,
