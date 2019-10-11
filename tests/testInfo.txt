@@ -1,0 +1,6 @@
+the essence for testing is to make sure;
+1. post => doesn't have any missing entity before posting;
+
+### Mocha is a our test FrameWork
+### Should is an assertion FrameWork for testing
+### Sinon is for our Mocing
