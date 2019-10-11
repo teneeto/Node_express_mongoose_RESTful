@@ -73,11 +73,11 @@ function routes(Book) {
       })
     })
     .delete((req,res)=>{
-      req.body.remove((err)=>{
+      req.book.remove((err)=>{
         if (err){
           return res.send(err);
         }
-        return res.status(204);
+        return res.sendStatus(204);
       })
     })
 
