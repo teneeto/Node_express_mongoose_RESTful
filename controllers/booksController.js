@@ -8,7 +8,6 @@ function booksController(Book) {
     book.save();
     res.status(201);
     return res.json(book);
-
   }
 
   function get(req, res) {
