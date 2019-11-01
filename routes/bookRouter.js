@@ -8,7 +8,7 @@ function routes(Book) {
   bookRouter.route('/books')
     .post(controller.post)
 
-    //to get all books in db
+    // to get all books in db
     .get(controller.get);
   // using a middle ware to intercept our request
   bookRouter.use('/books/:bookId', (req, res, next) => {
@@ -21,15 +21,15 @@ function routes(Book) {
         return next();
       }
       return res.sendStatus(404);
-    })
-  })
+    });
+  });
   bookRouter.route('/books/:bookId')
     .get((req, res) => {
       // adding HATEOAS for reference links to our api
       const returnBook = req.book.toJSON();
       returnBook.links = {};
       const genre = req.book.genre.replace(' ', '%20');
-      returnBook.links.filterByThisGenre = `http://${req.headers.host}/api/v1/books?genre=${genre}`
+      returnBook.links.filterByThisGenre = `http://${req.headers.host}/api/v1/books?genre=${genre}`;
       res.json(returnBook);
     })
     .put((req, res) => {
@@ -43,11 +43,13 @@ function routes(Book) {
           return res.send(err);
         }
         return res.json(book);
-      })
+      });
     })
     .patch((req, res) => {
       const { book } = req;
+      // eslint-disable-next-line no-underscore-dangle
       if (req.body._id) {
+        // eslint-disable-next-line no-underscore-dangle
         delete req.body._id;
       }
       Object.entries(req.body).forEach((item) => {
@@ -60,7 +62,7 @@ function routes(Book) {
           return res.send(err);
         }
         return res.json(book);
-      })
+      });
     })
     .delete((req, res) => {
       req.book.remove((err) => {
@@ -68,8 +70,8 @@ function routes(Book) {
           return res.send(err);
         }
         return res.sendStatus(204);
-      })
-    })
+      });
+    });
 
   return bookRouter;
 }
